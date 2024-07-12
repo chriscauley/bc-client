@@ -6,8 +6,5 @@
 
 <script>
 export default {
-  data() {
-    console.log(1)
-  }
 }
 </script>
