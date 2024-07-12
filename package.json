@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@unrest/tailwind": "^0.1.25",
+    "@unrest/vue": "^0.2.20",
+    "@unrest/vue-storage": "^0.0.21",
     "vue": "^3.4.29"
   },
   "devDependencies": {
