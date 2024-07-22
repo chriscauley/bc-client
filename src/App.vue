@@ -1,7 +1,10 @@
 <template>
-  <div>Hello World</div>
+  <router-view />
+  <unrest-ui />
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'App',
+}
 </script>

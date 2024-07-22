@@ -9,14 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@unrest/eslint-config": "^0.0.8",
     "@unrest/tailwind": "^0.1.25",
     "@unrest/vue": "^0.2.20",
+    "@unrest/vue-form": "^0.0.21",
     "@unrest/vue-storage": "^0.0.21",
     "@vue/cli-plugin-babel": "^5.0.8",
     "postcss-for": "^2.1.1",
     "postcss-functions": "^4.0.2",
-    "vue": "^3.4.29"
+    "vue": "^3.4.29",
+    "vue-router": "^4.4.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.12.16",
