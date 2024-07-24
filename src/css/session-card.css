@@ -1,0 +1,13 @@
+.session-card{
+  &__actions {
+    @apply flex justify-center;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__vote-button {
+    @apply block text-center cursor-pointer;
+    .ec {
+      font-size: 3em;
+    }
+  }
+}

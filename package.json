@@ -16,6 +16,7 @@
     "@unrest/vue-form": "^0.0.21",
     "@unrest/vue-storage": "^0.0.21",
     "@vue/cli-plugin-babel": "^5.0.8",
+    "date-fns": "^3.6.0",
     "postcss-for": "^2.1.1",
     "postcss-functions": "^4.0.2",
     "vue": "^3.4.29",

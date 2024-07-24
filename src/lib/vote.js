@@ -5,28 +5,28 @@ export const vote_list = [
     text: 'no',
     verbose: 'No Thanks',
     value: -1,
-    icon: 'ec ec-x',
-    className: 'red',
+    icon: 'ec ec-see-no-evil',
+    class: 'red',
   },
   {
     verbose: 'Maybe',
     text: 'maybe',
     value: 0,
     icon: 'ec ec-thinking',
-    className: 'yellow',
+    class: 'yellow',
   },
   {
     verbose: "Yes, I'm interested",
     text: 'yes',
     value: 1,
-    icon: 'fa fa-check-square-o green-text fa-ec',
-    className: 'green',
+    icon: 'ec ec-heart-eyes',
+    class: 'green',
   },
 ]
 
 export const vote_map = {}
 
-vote_list.forEach(vote => (vote_map[vote.value] = vote))
+vote_list.forEach((vote) => (vote_map[vote.value] = vote))
 
 // export const setVote = (talk, vote) => {
 //   talk.vote = vote_map[vote] ? { ...vote_map[vote] } : undefined
@@ -38,12 +38,11 @@ vote_list.forEach(vote => (vote_map[vote.value] = vote))
 //   talk.attendance = !_attendance
 // }
 
-// export const getTalkIcon = (talk, vote) => {
-//   if (talk.vote && vote.value === talk.vote.value) {
-//     return vote.icon + ' selected'
-//   }
-//   return vote.icon
-// }
+export const getSessionIcon = (session, vote) => [
+  vote.icon,
+  'vote',
+  session.vote && vote.value === session.vote.value && 'selected',
+]
 
 // export const prepTalkVotes = (component, resort) => {
 //   // fold existing votes into the talk data

@@ -36,20 +36,19 @@
     <!--   Click the clock to speed up time to 0, 5, or 15 minutes per second. -->
     <!--   Double click to reset. Use this power wisely, or you will break time. -->
     <!-- </p> -->
-    <p class="flow-text" style="whitespace: pre-line" onClick="next">{randText}</p>
-    )}
     <div class="hr" />
     <p class="center flow-text">What are you waiting for?</p>
     <div class="center mb">
       <router-link to="/vote/">
-        <button class="btn btn-blue">Start Choosing Talks</button>
+        <button class="btn -primary">Start Choosing Talks</button>
       </router-link>
     </div>
+    <p class="flow-text" style="whitespace: pre-line" @click="next">{{ rand_text }}</p>
   </div>
 </template>
 
 <script>
-import { vote_list } from '../lib/vote'
+import { vote_list } from '@/lib/vote'
 
 const rand_texts = [
   'On one hand, the stars are worthless. On the other hand... shiny!',
@@ -60,7 +59,6 @@ const rand_texts = [
 ]
 
 export default {
-  name: 'HelpView',
   data() {
     return {
       vote_list,
