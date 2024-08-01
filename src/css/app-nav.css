@@ -1,0 +1,26 @@
+body {
+  background: var(--bg-alt);
+}
+
+.app-wrapper {
+  @apply flex flex-col shadow;
+  background: var(--bg);
+  height: 100vh;
+  margin: auto;
+  width: 100%;
+  max-width: 450px;
+}
+
+.app-nav {
+  @apply border-b flex items-center left-0 py-2 px-4 relative select-none;
+  &__title {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .btn {
+    @apply relative;
+  }
+  .pill {
+    @apply absolute bottom-0 right-0;
+  }
+}

@@ -6,7 +6,7 @@
     <p class="flow-text">Swipe or tap talks to sort them into the following lists.</p>
     <ul class="browser-default">
       <li v-for="vote in vote_list" class="mb" :key="vote.value">
-        <span class="vote.icon" />
+        <span :class="vote.icon" />
         {{ vote.verbose }}
       </li>
     </ul>
@@ -14,7 +14,7 @@
     <h4 class="red-text lighten-2">Step 2: View Schedule</h4>
     <p class="flow-text">
       Your schedule will show
-      <span class="vote_list[2].icon" />
+      <span :class="vote_list[2].icon" />
       votes at thee top of each time slot.
     </p>
     <div class="hr" />
@@ -26,8 +26,7 @@
 
     <div class="hr" />
     <p class="flow-text">
-      If you want to use this app or know more, contact @badatmetroid on discord or checkout the{'
-      '}
+      If you want to use this app or know more, contact @badatmetroid on discord or checkout the
       <a href="https://github.com/chriscauley/ur-conf/">github repo</a>.
     </p>
     <div class="hr" />

@@ -1,5 +1,6 @@
-import unrest from '@unrest/vue'
+// import unrest from '@unrest/vue'
 
+import app from './app'
 import event from './event'
 import vote from './vote'
 
@@ -8,6 +9,7 @@ const store = {}
 const modules = {
   event,
   vote,
+  app,
 }
 
 window._store = store
