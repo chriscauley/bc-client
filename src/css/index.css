@@ -1,10 +1,19 @@
 @import 'tailwind.css';
 
+@import './views.css';
 @import './app-nav.css';
 @import './session-card.css';
 
 @font-face {
   font-family: "Digital-7";
-  src: url("../../public/digital-7/digital-7.ttf");
+  src: url("/digital-7/digital-7.ttf");
 }
 
+.ec.yes-no-may-be-so-blob {
+  display: inline-block;
+  background-image: url("/public/yes-no-may-be-so-blob.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 1.2em;
+  width: 1.2em;
+}

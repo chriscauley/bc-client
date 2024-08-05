@@ -26,7 +26,7 @@ import { format } from 'date-fns'
 
 export default {
   data() {
-    return { show_clock: true }
+    return { show_clock: false }
   },
   computed: {
     live_time() {
@@ -43,6 +43,9 @@ export default {
     setTime(time) {
       this.$store.app.setNow(time)
       this.show_clock = false
+      if (this.$route.path !== '/') {
+        this.$router.push('/')
+      }
     },
   },
 }

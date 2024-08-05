@@ -1,0 +1,13 @@
+.time-view {
+  @apply p-2;
+  .time-group {
+    @apply mb-8;
+    &__name {
+      @apply bg-gray-200;
+      text-transform: capitalize;
+      &-inner {
+        @apply flex items-center font-bold gap-2 text-xl;
+      }
+    }
+  }
+}

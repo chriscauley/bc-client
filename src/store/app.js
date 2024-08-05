@@ -1,13 +1,14 @@
-import { reactive } from 'vue'
 import { format } from 'date-fns'
 import { EVENT_ID } from '@/store/event'
-import { sortBy } from 'lodash'
+import { sortBy, kebabCase } from 'lodash'
+
+import { ReactiveLocalStorage } from '@unrest/vue-storage'
 
 const byId = (obj) => Object.fromEntries(Object.values(obj).map((entity) => [entity.id, entity]))
 
 export default ({ store }) => {
-  const state = reactive({ tick: 0, current_time: null })
-  setInterval(() => state.tick++, 1000)
+  const storage = ReactiveLocalStorage({ tick: 0, current_time: null })
+  setInterval(() => storage.save({ tick: storage.state.tick + 1 }), 60 * 1000)
   return {
     get() {
       const { id: event_id, sessions, rooms, times } = store.event.getCurrent() || {}
@@ -31,23 +32,25 @@ export default ({ store }) => {
       sessions.forEach((s) => {
         s.room = room_by_id[s.room_id]
         s.time = time_by_id[s.schedule_time_id]
+        s.slug = kebabCase(s.title)
       })
+      let sorted_sessions = sortBy(sessions, (s) => s.time.start)
 
       votes.forEach((v) => {
         const session = session_by_id[v.session_id] || {}
         session.vote = v
       })
-      return { sessions, rooms, times, loading: false }
+      return { sessions: sorted_sessions, rooms, times, loading: false }
     },
     setNow(time) {
-      state.current_time = time
+      storage.save({ current_time: time })
     },
     now() {
       // this next line is a noop to watch the timer
-      const tick = state.tick; // eslint-disable-line
+      const tick = storage.state.tick; // eslint-disable-line
       const now = new Date().valueOf()
       const { times, sessions } = this.get()
-      const current_time = state.current_time || now
+      const current_time = storage.state.current_time || now
       let next = sortBy(times, (t) => Math.abs(current_time - t.valueOf))[0]
       return {
         next,

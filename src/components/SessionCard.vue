@@ -1,19 +1,7 @@
 <template>
   <div class="card session-card" style="{this.state.cardStyle}">
     <div class="card-body">
-      <div class="card-title">
-        <h5>{{ session.title }}</h5>
-      </div>
-      <div class="session-card__details">
-        with
-        <b>{{ session.leaders }}</b>
-        <span v-if="session.room">
-          in <b>{{ session.room.title }}</b>
-        </span>
-        <span v-if="session.time">
-          @ <b>{{ session.time.display }}</b>
-        </span>
-      </div>
+      <SessionTitle class="card-title" :session="session" />
       <hr />
       <p class="description">{{ session.description }}</p>
       <div class="session-card__bottom">

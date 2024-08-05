@@ -4,9 +4,6 @@
   max-height: 400px;
   max-width: unset; /* annoying width constraint from @unrest/tailwind */
   width: 100%;
-  .card-title {
-    @apply font-bold text-lg;
-  }
   .card-body {
     @apply flex flex-col gap-4;
   }
@@ -24,6 +21,18 @@
     @apply block text-center cursor-pointer;
     .ec {
       font-size: 3em;
+    }
+  }
+}
+
+.list-group-item {
+  .session-card__details {
+    margin-top: -1em;
+  }
+  .session-title {
+    @apply w-full;
+    .h3 {
+      @apply truncate w-full text-lg;
     }
   }
 }
