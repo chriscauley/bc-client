@@ -1,4 +1,4 @@
-import { cloneDeep, shuffle, sortBy } from 'lodash'
+// import { cloneDeep, shuffle, sortBy } from 'lodash'
 
 export const vote_list = [
   {

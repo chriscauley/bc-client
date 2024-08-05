@@ -2,3 +2,9 @@
 
 @import './app-nav.css';
 @import './session-card.css';
+
+@font-face {
+  font-family: "Digital-7";
+  src: url("../../public/digital-7/digital-7.ttf");
+}
+

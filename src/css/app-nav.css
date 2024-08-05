@@ -14,7 +14,7 @@ body {
 .app-nav {
   @apply border-b flex items-center left-0 py-2 px-4 relative select-none;
   &__title {
-    font-weight: bold;
+    @apply font-bold pr-4;
     font-size: 1.5rem;
   }
   .btn {
@@ -22,5 +22,25 @@ body {
   }
   .pill {
     @apply absolute bottom-0 right-0;
+  }
+  &__clock {
+    @apply cursor-pointer;
+    color: #008800;
+    font-size: 2rem;
+    font-family: Digital-7, monospace, sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  &__blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+  }
+  &__clock-list .list-group-item {
+    @apply cursor-pointer;
+  }
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
   }
 }

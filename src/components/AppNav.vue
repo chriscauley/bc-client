@@ -1,6 +1,9 @@
 <template>
   <div class="app-nav">
-    <router-link class="app-nav__title link" to="/">BarCamp</router-link>
+    <router-link class="app-nav__title link" to="/">
+      <img :src="favicon" />
+    </router-link>
+    <clock-widget />
     <div class="flex-grow" />
     <router-link class="btn -link" to="/help/">
       <i class="fa fa-question-circle" style="font-size: 2em; line-height: 1" />
@@ -16,7 +19,14 @@
 </template>
 
 <script>
+import favicon from '@/../public/favicon.ico'
+import ClockWidget from './ClockWidget.vue'
+
 export default {
+  components: { ClockWidget },
+  data() {
+    return { favicon }
+  },
   computed: {
     unvoted() {
       const { sessions = [] } = this.$store.app.get()
