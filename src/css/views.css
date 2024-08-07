@@ -11,3 +11,35 @@
     }
   }
 }
+
+.help-view {
+  .h2 {
+    @apply text-center;
+  }
+  .h4 {
+    @apply flex gap-4 items-center justify-center;
+  }
+  .h4, &__vote {
+    .ec {
+      font-size: 2em;
+    }
+  }
+  &__vote {
+    @apply flex gap-2 items-center ml-4;
+  }
+  @apply mx-4;
+  .hr {
+    @apply border-b mb-4 mt-2;
+  }
+  &__actions {
+    @apply text-center mt-4;
+  }
+  .btn {
+    @apply mb-4 mt-2;
+  }
+  &__random-text {
+    @apply text-center;
+    white-space: pre-line;
+    color: var(--text-alt);
+  }
+}
