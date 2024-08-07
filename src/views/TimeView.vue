@@ -9,9 +9,9 @@
         </div>
       </div>
       <router-link
-        :to="`/session/${session.slug}/${session.id}/`"
         v-for="session in group.sessions"
         :key="session.id"
+        :to="`/session/${session.id}/${session.slug}/`"
         class="time-group__session list-group-item"
       >
         <session-title :session="session" />
@@ -33,15 +33,13 @@ export default {
       const groups = vote_list.toReversed()
       groups.forEach((g) => (g.sessions = sessions.filter((s) => s.vote?.value === g.value)))
       const no_vote = sessions.filter((s) => !s.vote)
-      if (no_vote.length) {
-        groups.push({
-          text: 'None',
-          sessions: no_vote,
-          icon: 'ec yes-no-may-be-so-blob',
-        })
-      }
+      groups.push({
+        text: 'None',
+        sessions: no_vote,
+        icon: 'ec yes-no-may-be-so-blob',
+      })
 
-      return groups
+      return groups.filter((g) => g.sessions.length > 0)
     },
   },
 }

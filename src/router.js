@@ -7,6 +7,7 @@ const router = createRouter({
     { path: '/', component: views.TimeView },
     { path: '/help/', component: views.HelpView },
     { path: '/vote/', component: views.VoteView },
+    { path: '/session/:session_id/:session_slug/', component: views.SessionDetailView },
   ],
 })
 

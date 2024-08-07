@@ -8,20 +8,24 @@
     @apply flex flex-col gap-4;
   }
   &__details {
-    margin-top: -1.5rem;
+    margin-top: -0.5rem;
   }
   &__bottom {
     @apply absolute border-t inset-0 p-6 pt-4 w-full;
     top: unset;
   }
   &__actions {
-    @apply flex justify-between;
+    @apply flex justify-between m-auto;
+    max-width: 300px;
   }
   &__vote-button {
     @apply block text-center cursor-pointer;
     .ec {
       font-size: 3em;
     }
+  }
+  .h3 {
+    line-height: 1.2;
   }
 }
 
