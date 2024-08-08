@@ -7,9 +7,16 @@ import { ReactiveLocalStorage } from '@unrest/vue-storage'
 const byId = (obj) => Object.fromEntries(Object.values(obj).map((entity) => [entity.id, entity]))
 
 export default ({ store }) => {
-  const storage = ReactiveLocalStorage({ tick: 0, current_time: null })
+  const storage = ReactiveLocalStorage({
+    initial: {
+      tick: 0,
+      current_time: null,
+      first_visit: true,
+    },
+  })
   setInterval(() => storage.save({ tick: storage.state.tick + 1 }), 60 * 1000)
   return {
+    storage,
     get() {
       const { id: event_id, sessions, rooms, times } = store.event.getCurrent() || {}
       const votes = store.vote.getAllForEvent(EVENT_ID)

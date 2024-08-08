@@ -45,8 +45,16 @@
     <!-- <div class="hr" /> -->
     <div class="help-view__actions text-center">
       <p>What are you waiting for?</p>
-      <router-link to="/vote/">
+      <router-link to="/vote/" class="help-view__action">
+        <span class="ec ec-thinking" />
         <button class="btn -primary">Start Choosing Talks</button>
+      </router-link>
+      <div>
+        <b> - OR - </b>
+      </div>
+      <router-link to="/" class="help-view__action">
+        <span class="ec conference-logo" />
+        <button class="btn -primary">See Current Schedule</button>
       </router-link>
     </div>
     <div class="hr" />

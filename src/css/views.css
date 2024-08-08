@@ -13,16 +13,14 @@
 }
 
 .help-view {
+  .ec {
+    font-size: 2em;
+  }
   .h2 {
     @apply text-center;
   }
   .h4 {
     @apply flex gap-4 items-center justify-center;
-  }
-  .h4, &__vote {
-    .ec {
-      font-size: 2em;
-    }
   }
   &__vote {
     @apply flex gap-2 items-center ml-4;
@@ -34,8 +32,11 @@
   &__actions {
     @apply text-center mt-4;
   }
+  &__action {
+    @apply flex gap-2 items-center justify-center;
+  }
   .btn {
-    @apply mb-4 mt-2;
+    @apply my-4;
   }
   &__random-text {
     @apply text-center;

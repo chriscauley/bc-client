@@ -12,7 +12,8 @@
 .ec {
   &.yes-no-may-be-so-blob,
   &.party-blob,
-  &.party-blob-2 {
+  &.party-blob-2,
+  &.conference-logo{
     display: inline-block;
     background-repeat: no-repeat;
     background-size: contain;
@@ -27,6 +28,9 @@
   }
   &.party-blob-2 {
     background-image: url("/public/party-blob-2.gif");
+  }
+  &.conference-logo {
+    background-image: url("/public/favicon.ico");
   }
 }
 

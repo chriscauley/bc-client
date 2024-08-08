@@ -42,5 +42,13 @@ export default {
       return groups.filter((g) => g.sessions.length > 0)
     },
   },
+  mounted() {
+    // TODO this needs to be moved to the server because people can use multiple browsers
+    // the first time they come to the site, redirect to the help page
+    if (this.$store.app.storage.state.first_visit) {
+      this.$router.replace('/help')
+      this.$store.app.storage.save({ first_visit: false })
+    }
+  },
 }
 </script>
