@@ -1,12 +1,45 @@
-.time-view {
+body {
+  --nav-height: 72px;
+  --button-height: 80px;
+}
+
+.app-view {
   @apply p-2;
+  max-height: calc(100% - var(--nav-height));
+  overflow-y: auto;
+  &:has(.app-view__btns) {
+    max-height: calc(100% - var(--nav-height) - var(--button-height));
+  }
+  &__btns {
+    @apply absolute border-t flex inset-0 items-center justify-between w-full p-4;
+    background: var(--bg);
+    top: unset;
+    z-index: 1;
+  }
+  &__btn {
+    @apply cursor-pointer flex items-center gap-4;
+    i {
+      order: 0;
+      font-size: 2em;
+    }
+    &.-next i {
+      order: 1;
+    }
+    &.-disabled {
+      opacity: 0.15;
+      pointer-events: none;
+    }
+  }
+}
+
+.time-view {
   .time-group {
     @apply mb-8;
     &__name {
       @apply bg-gray-200;
       text-transform: capitalize;
       &-inner {
-        @apply flex items-center font-bold gap-2 text-xl;
+        @apply flex flex-grow items-center font-bold gap-2 text-xl;
       }
     }
   }

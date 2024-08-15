@@ -3,7 +3,7 @@ body {
 }
 
 .app-wrapper {
-  @apply flex flex-col shadow;
+  @apply relative flex flex-col shadow;
   background: var(--bg);
   height: 100vh;
   margin: auto;

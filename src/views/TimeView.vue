@@ -1,5 +1,5 @@
 <template>
-  <div class="time-view" v-if="now.next">
+  <div class="time-view -has-buttons" v-if="now.next">
     <h3 class="h3">{{ now.next.verbose }}</h3>
     <div v-for="group in groups" :key="group.text" class="time-group list-group">
       <div class="time-group__name list-group-item">
@@ -17,9 +17,19 @@
         <session-title :session="session" />
       </router-link>
     </div>
+    <div class="app-view__btns">
+      <div v-for="btn in time_btns" :key="btn.id" :class="btn.cls" @click="goto(btn)">
+        <i :class="btn.icon" />
+        <div class="text-center">
+          <b>{{ btn.title }}</b>
+          <br />
+          {{ btn.display }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
-s
+
 <script>
 import { vote_list } from '@/lib/vote'
 
@@ -41,6 +51,26 @@ export default {
 
       return groups.filter((g) => g.sessions.length > 0)
     },
+    time_btns() {
+      const { times } = this.$store.app.get()
+      const nextIndex = times.indexOf(this.now.next)
+      const prev = times[nextIndex - 1]
+      const next = times[nextIndex + 1]
+      return {
+        prev: {
+          icon: 'fa fa-chevron-left',
+          title: 'Start Of Day',
+          cls: ['app-view__btn -prev', !prev && '-disabled'],
+          ...prev,
+        },
+        next: {
+          icon: 'fa fa-chevron-right',
+          title: 'End Of Day',
+          cls: ['app-view__btn -next', !next && '-disabled'],
+          ...next,
+        },
+      }
+    },
   },
   mounted() {
     // TODO this needs to be moved to the server because people can use multiple browsers
@@ -49,6 +79,11 @@ export default {
       this.$router.replace('/help')
       this.$store.app.storage.save({ first_visit: false })
     }
+  },
+  methods: {
+    goto(time) {
+      this.$store.app.setNow(time.valueOf)
+    },
   },
 }
 </script>

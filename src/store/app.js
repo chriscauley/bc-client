@@ -18,7 +18,8 @@ export default ({ store }) => {
   return {
     storage,
     get() {
-      const { id: event_id, sessions, rooms, times } = store.event.getCurrent() || {}
+      const { id: event_id, rooms } = store.event.getCurrent() || {}
+      let { sessions, times } = store.event.getCurrent() || {}
       const votes = store.vote.getAllForEvent(EVENT_ID)
       if (!event_id) {
         return { loading: true }
@@ -41,13 +42,14 @@ export default ({ store }) => {
         s.time = time_by_id[s.schedule_time_id]
         s.slug = kebabCase(s.title)
       })
-      let sorted_sessions = sortBy(sessions, (s) => s.time.start)
+      sessions = sortBy(sessions, (s) => s.time.start)
+      times = sortBy(times, (t) => t.start)
 
       votes.forEach((v) => {
         const session = session_by_id[v.session_id] || {}
         session.vote = v
       })
-      return { sessions: sorted_sessions, rooms, times, loading: false }
+      return { sessions: sessions, rooms, times, loading: false }
     },
     setNow(time) {
       storage.save({ current_time: time })

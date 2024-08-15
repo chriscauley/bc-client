@@ -5,7 +5,7 @@
       <span class="ec yes-no-may-be-so-blob" />
       Step 1: Choose Talks
     </h4>
-    <p class="flow-text">Swipe or tap talks to sort them into the following lists.</p>
+    <p class="flow-text">Vote on each talk to sort them into the following lists.</p>
     <ul class="browser-default">
       <div class="help-view__vote" v-for="vote in vote_list" :key="vote.value">
         <span :class="vote.icon" />
@@ -19,7 +19,7 @@
     </h4>
     <p class="flow-text">
       Your schedule will show
-      <span :class="vote_list[2].icon" />
+      <span :class="vote_list[0].icon" />
       votes at thee top of each time slot.
     </p>
     <div class="hr" />
