@@ -5,9 +5,11 @@ body {
 
 .app-view {
   @apply p-2;
+  height: calc(100% - var(--nav-height));
   max-height: calc(100% - var(--nav-height));
   overflow-y: auto;
   &:has(.app-view__btns) {
+    height: calc(100% - var(--nav-height) - var(--button-height));
     max-height: calc(100% - var(--nav-height) - var(--button-height));
   }
   &__btns {
@@ -15,6 +17,9 @@ body {
     background: var(--bg);
     top: unset;
     z-index: 1;
+    &.-vote {
+      @apply justify-around;
+    }
   }
   &__btn {
     @apply cursor-pointer flex items-center gap-4;

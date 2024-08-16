@@ -1,7 +1,5 @@
 .session-card {
   @apply relative;
-  height: calc(100vh - 72px);
-  max-height: 400px;
   max-width: unset; /* annoying width constraint from @unrest/tailwind */
   width: 100%;
   .card-body {
@@ -13,10 +11,6 @@
   &__bottom {
     @apply absolute border-t inset-0 p-6 pt-4 w-full;
     top: unset;
-  }
-  &__actions {
-    @apply flex justify-between m-auto;
-    max-width: 300px;
   }
   &__vote-button {
     @apply block text-center cursor-pointer;

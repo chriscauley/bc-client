@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!app.loading">
+  <div v-if="!app.loading" class="vote-view">
     <SessionCard :session="current_session" />
   </div>
 </template>

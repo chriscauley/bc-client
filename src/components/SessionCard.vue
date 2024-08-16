@@ -4,18 +4,16 @@
       <SessionTitle class="card-title" :session="session" />
       <hr />
       <p class="description">{{ session.description }}</p>
-      <div class="session-card__bottom">
-        <div class="session-card__actions">
-          <div v-for="vote in vote_list" :key="vote.value">
-            <a @click="doVote(vote.value)" class="session-card__vote-button">
-              <span :class="getSessionIcon(session, vote)" />
-              <div>
-                {{ vote.text }}
-              </div>
-            </a>
-          </div>
+    </div>
+  </div>
+  <div class="app-view__btns -vote">
+    <div v-for="vote in vote_list" :key="vote.value">
+      <a @click="doVote(vote.value)" class="session-card__vote-button app-view__btn">
+        <span :class="getSessionIcon(session, vote)" />
+        <div>
+          {{ vote.text }}
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </template>
