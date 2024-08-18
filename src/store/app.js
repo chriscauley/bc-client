@@ -20,8 +20,8 @@ export default ({ store }) => {
     get() {
       const { id: event_id, rooms } = store.event.getCurrent() || {}
       let { sessions, times } = store.event.getCurrent() || {}
-      const votes = store.vote.getAllForEvent(EVENT_ID)
-      if (!event_id) {
+      const { votes, attendance } = store.vote.getAllForEvent(EVENT_ID) || {}
+      if (!event_id || !votes) {
         return { loading: true }
       }
       const session_by_id = byId(sessions)
@@ -45,11 +45,11 @@ export default ({ store }) => {
       sessions = sortBy(sessions, (s) => s.time.start)
       times = sortBy(times, (t) => t.start)
 
-      votes.forEach((v) => {
+      Object.values(votes).forEach((v) => {
         const session = session_by_id[v.session_id] || {}
         session.vote = v
       })
-      return { sessions: sessions, rooms, times, loading: false }
+      return { votes, attendance, sessions: sessions, rooms, times, loading: false }
     },
     setNow(time) {
       storage.save({ current_time: time })

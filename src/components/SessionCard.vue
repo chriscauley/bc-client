@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     doVote(value) {
-      this.$store.vote.save({
+      this.$store.vote.saveVote({
         session_id: this.session.id,
         event_id: EVENT_ID,
         attended: this.session.vote?.attended || false,
