@@ -8,10 +8,12 @@ const byId = (obj) => Object.fromEntries(Object.values(obj).map((entity) => [ent
 
 export default ({ store }) => {
   const storage = ReactiveLocalStorage({
+    LS_KEY: 'app_misc',
     initial: {
       tick: 0,
       current_time: null,
       first_visit: true,
+      vote_reminded: false,
     },
   })
   setInterval(() => storage.save({ tick: storage.state.tick + 1 }), 60 * 1000)
@@ -49,7 +51,7 @@ export default ({ store }) => {
         const session = session_by_id[v.session_id] || {}
         session.vote = v
       })
-      return { votes, attendance, sessions: sessions, rooms, times, loading: false }
+      return { votes, attendance, sessions, rooms, times, loading: false }
     },
     setNow(time) {
       storage.save({ current_time: time })

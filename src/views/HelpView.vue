@@ -35,7 +35,9 @@
     <div class="hr" />
     <p class="flow-text">
       If you want to use this app or know more, contact @badatmetroid on discord or checkout the
-      <a href="https://github.com/chriscauley/ur-conf/">github repo</a>.
+      github repos for the
+      <a href="https://github.com/chriscauley/bc-client/">front end</a> or
+      <a href="https://github.com/FlipperPA/unconference/">back end</a>
     </p>
     <!-- <h4 class="h4">Step &infin;: Control TIME!!!</h4> -->
     <!-- <p class="flow-text"> -->

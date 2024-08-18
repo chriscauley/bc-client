@@ -4,7 +4,7 @@ body {
 }
 
 .app-view {
-  @apply p-2;
+  @apply px-6 py-4;
   height: calc(100% - var(--nav-height));
   max-height: calc(100% - var(--nav-height));
   overflow-y: auto;
@@ -39,9 +39,9 @@ body {
 
 .time-view {
   .time-group {
-    @apply mb-8;
+    @apply mb-8 overflow-hidden;
     &__name {
-      @apply bg-gray-200;
+      background-color: var(--bg-alt);
       text-transform: capitalize;
       &-inner {
         @apply flex flex-grow items-center font-bold gap-2 text-xl;
@@ -63,7 +63,6 @@ body {
   &__vote {
     @apply flex gap-2 items-center ml-4;
   }
-  @apply mx-4;
   .hr {
     @apply border-b mb-4 mt-2;
   }

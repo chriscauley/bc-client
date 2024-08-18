@@ -24,3 +24,5 @@ app.config.unwrapInjectedRef = true
 Object.entries(components).forEach(([name, component]) => app.component(name, component))
 
 app.mount('#app')
+
+document.body.classList.add('theme-dark_mode')
