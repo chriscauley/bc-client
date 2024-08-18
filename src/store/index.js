@@ -2,14 +2,16 @@
 
 import app from './app'
 import event from './event'
+import user from './user'
 import vote from './vote'
 
 const store = {}
 
 const modules = {
+  app,
   event,
   vote,
-  app,
+  user,
 }
 
 window._store = store
