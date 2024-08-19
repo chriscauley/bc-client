@@ -6,6 +6,9 @@ import { ReactiveLocalStorage } from '@unrest/vue-storage'
 
 const byId = (obj) => Object.fromEntries(Object.values(obj).map((entity) => [entity.id, entity]))
 
+// the timezones are wrong in the database for BC 2023
+const fixTimezone = (time) => time.replace('Z', '')
+
 export default ({ store }) => {
   const storage = ReactiveLocalStorage({
     LS_KEY: 'app_misc',
@@ -20,10 +23,11 @@ export default ({ store }) => {
   return {
     storage,
     get() {
-      const { id: event_id, rooms } = store.event.getCurrent() || {}
+      const event = store.event.getCurrent() || {}
+      const { rooms } = event
       let { sessions, times } = store.event.getCurrent() || {}
       const { votes, attendance } = store.vote.getAllForEvent(EVENT_ID) || {}
-      if (!event_id || !votes) {
+      if (!event.id || !votes) {
         return { loading: true }
       }
       const session_by_id = byId(sessions)
@@ -31,9 +35,8 @@ export default ({ store }) => {
       const time_by_id = byId(times)
 
       times.forEach((time) => {
-        // the timezones are wrong in the database for BC 2023
-        time.start = time.start.replace('Z', '')
-        time.end = time.end.replace('Z', '')
+        time.start = fixTimezone(time.start)
+        time.end = fixTimezone(time.end)
         time.display = format(new Date(time.start), 'h:mm aaa')
         time.verbose = `${time.title} @ ${time.display}`
         time.valueOf = new Date(time.start).valueOf()
@@ -58,11 +61,17 @@ export default ({ store }) => {
     },
     now() {
       // this next line is a noop to watch the timer
+      const event = store.event.getCurrent() || { end: '' }
       const tick = storage.state.tick; // eslint-disable-line
       const now = new Date().valueOf()
       const { times, sessions } = this.get()
-      const current_time = storage.state.current_time || now
+      let current_time = storage.state.current_time || now
+      // the timezones are wrong in the database for BC 2023
+      if (current_time > new Date(fixTimezone(event.end)).valueOf()) {
+        current_time = Math.min(...event.times.map((t) => new Date(fixTimezone(t.start)).valueOf()))
+      }
       let next = sortBy(times, (t) => Math.abs(current_time - t.valueOf))[0]
+
       return {
         next,
         sessions: sessions?.filter((s) => s.time === next) || [],

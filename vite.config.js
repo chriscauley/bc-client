@@ -4,9 +4,6 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 const config = defineConfig({
-  build: {
-    outDir: '../static_root',
-  },
   plugins: [vue()],
   resolve: {
     alias: {
