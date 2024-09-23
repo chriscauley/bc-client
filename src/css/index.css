@@ -2,6 +2,7 @@
 
 @import './views.css';
 @import './app-nav.css';
+@import './room-map.css';
 @import './session-card.css';
 
 @font-face {

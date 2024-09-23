@@ -1,0 +1,5 @@
+.room-map {
+  @apply absolute border;
+  background: white;
+  color: black;
+}
