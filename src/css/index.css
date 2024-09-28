@@ -11,6 +11,10 @@
   src: url("/digital-7/digital-7.ttf");
 }
 
+.flex-gap {
+  @apply flex flex-col gap-4;
+}
+
 .modal-content {
   width: $app-width;
   p {

@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="flex-gap">
     <div>
       Email Address: {{ user.email }}
     </div>
-    <div v-if="user_sessions">
+    <template v-if="user_sessions">
       <p>
         You are signed up to lead the following talks. Click on one to edit the title,
         description, or info links.
@@ -18,7 +18,7 @@
           <session-title :session="session" />
         </div>
       </div>
-    </div>
+    </template>
     <div v-else>
       You are not presenting any talks. If this is incorrect, please refresh your browser.
     </div>
