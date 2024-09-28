@@ -1,5 +1,4 @@
 import { format } from 'date-fns'
-import { EVENT_ID } from '@/store/event'
 import { sortBy, kebabCase } from 'lodash'
 
 import { ReactiveLocalStorage } from '@unrest/vue-storage'
@@ -17,16 +16,21 @@ export default ({ store }) => {
       current_time: null,
       first_visit: true,
       vote_reminded: false,
+      current_event_id: 1,
     },
   })
+  if (!storage.state.current_event_id) {
+    storage.state.save({ current_event_id: 1 })
+  }
   setInterval(() => storage.save({ tick: storage.state.tick + 1 }), 60 * 1000)
   return {
     storage,
     get() {
       const event = store.event.getCurrent() || {}
       const { rooms } = event
-      let { sessions, times } = store.event.getCurrent() || {}
-      const { votes, attendance } = store.vote.getAllForEvent(EVENT_ID) || {}
+      let { sessions, times } = event
+      const { current_event_id } = storage.state
+      const { votes, attendance={} } = store.vote.getAllForEvent(current_event_id) || {}
       if (!event.id || !votes) {
         return { loading: true }
       }
@@ -53,6 +57,7 @@ export default ({ store }) => {
       Object.values(votes).forEach((v) => {
         const session = session_by_id[v.session_id] || {}
         session.vote = v
+        session.attendance = attendance[session.id]
       })
       return { votes, attendance, sessions, rooms, times, loading: false }
     },

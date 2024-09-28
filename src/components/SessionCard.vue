@@ -4,6 +4,16 @@
       <SessionTitle class="card-title" :session="session" />
       <hr />
       <p class="description">{{ session.description }}</p>
+      <template v-if="session.data.links?.length > 0">
+        <hr />
+        <div>
+          <h4 class="h4">Additional info</h4>
+          <div v-for="link in session.data.links" :key="link">
+            <a class="truncate" v-if="isLink(link)" :href="link">{{ link }}</a>
+            <div v-else>{{ link }}</div>
+          </div>
+        </div>
+      </template>
     </div>
   </div>
   <div class="app-view__btns -vote">
@@ -19,7 +29,6 @@
 </template>
 
 <script>
-import { EVENT_ID } from '@/store/event'
 import { getSessionIcon, vote_list } from '@/lib/vote'
 
 export default {
@@ -30,10 +39,19 @@ export default {
     return { getSessionIcon, vote_list }
   },
   methods: {
+    isLink(link) {
+      try {
+        const url = new URL(link)
+        return true
+      } catch (e) {
+        return false
+      }
+    },
     doVote(value) {
+      const { current_event_id } = this.$store.app.storage.state
       this.$store.vote.saveVote({
         session_id: this.session.id,
-        event_id: EVENT_ID,
+        event_id: current_event_id,
         attended: this.session.vote?.attended || false,
         id: this.session.vote?.id,
         value,

@@ -6,5 +6,9 @@ export default () => {
     get() {
       return storage.get('user.json')
     },
+    isAuthenticated() {
+      const { email } = this.get() || {}
+      return email && !email.endsWith('@example.com')
+    },
   }
 }

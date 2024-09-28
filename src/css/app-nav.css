@@ -8,7 +8,7 @@ body {
   height: 100vh;
   margin: auto;
   width: 100%;
-  max-width: 450px;
+  max-width: $app-width;
 }
 
 .app-nav {
@@ -24,7 +24,7 @@ body {
     @apply absolute bottom-0 right-0;
   }
   &__clock {
-    @apply cursor-pointer;
+    @apply cursor-pointer flex items-center;
     color: #008800;
     font-size: 2rem;
     font-family: Digital-7, monospace, sans-serif;
@@ -33,9 +33,19 @@ body {
   }
   &__blink {
     animation: blink-animation 1s steps(5, start) infinite;
+    &.-small {
+      @apply ml-1;
+      animation: blink-animation 1.5s steps(5, start) infinite;
+      font-size: 0.5em;
+      line-height: 1;
+    }
   }
   &__clock-list .list-group-item {
     @apply cursor-pointer;
+  }
+  .ec-sleeping {
+    font-size: 0.75em;
+    @apply ml-2 mt-2;
   }
 }
 

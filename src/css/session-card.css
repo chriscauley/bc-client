@@ -21,11 +21,19 @@
   .h3 {
     line-height: 1.2;
   }
+  a {
+    text-decoration: underline;
+    display: block;
+    max-width: 100%;
+  }
 }
 
 .list-group-item {
   .session-card__details {
     margin-top: -1em;
+  }
+  &.time-group__session {
+    @apply cursor-pointer;
   }
   .session-title {
     @apply w-full;
