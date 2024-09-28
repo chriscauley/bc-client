@@ -54,12 +54,14 @@ export default {
         this.link_count += 1
       }
     },
-    submit() {
+    async submit() {
       const data = {... this.state}
       data.links = new Array(this.link_count).fill(0)
         .map((_,i) => this.state[`link__${i}`])
         .filter(s => (s || '').trim())
-      this.$store.event.api.post(`session/${this.session_id}/`, data)
+      await this.$store.event.api.post(`session/${this.session_id}/`, data)
+      this.$store.event.api.markStale()
+      this.$emit('close')
     }
   }
 }
