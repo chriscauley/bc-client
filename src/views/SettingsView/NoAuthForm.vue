@@ -8,9 +8,7 @@
     <br />
     <unrest-form :schema="schema" @submit="submit" />
   </div>
-  <div v-else>
-    A confirmation email has been sent to {{ submitted }}
-  </div>
+  <div v-else>A confirmation email has been sent to {{ submitted }}</div>
 </template>
 
 <script>
@@ -31,7 +29,9 @@ export default {
   },
   methods: {
     submit(form_data) {
-      client.post('claim-account/', form_data).then(() => { this.submitted = form_data.email })
+      client.post('claim-account/', form_data).then(() => {
+        this.submitted = form_data.email
+      })
     },
   },
 }

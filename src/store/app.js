@@ -30,7 +30,7 @@ export default ({ store }) => {
       const { rooms } = event
       let { sessions, times } = event
       const { current_event_id } = storage.state
-      const { votes, attendance={} } = store.vote.getAllForEvent(current_event_id) || {}
+      const { votes, attendance = {} } = store.vote.getAllForEvent(current_event_id) || {}
       if (!event.id || !votes) {
         return { loading: true }
       }
@@ -50,8 +50,9 @@ export default ({ store }) => {
         s.room = room_by_id[s.room_id]
         s.time = time_by_id[s.schedule_time_id]
         s.slug = kebabCase(s.title)
+        s.time_id = s.schedule_time_id
       })
-      sessions = sortBy(sessions, (s) => s.time.start)
+      sessions = sortBy(sessions, (s) => s.time?.start || s.title)
       times = sortBy(times, (t) => t.start)
 
       Object.values(votes).forEach((v) => {

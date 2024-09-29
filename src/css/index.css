@@ -15,6 +15,11 @@
   @apply flex flex-col gap-4;
 }
 
+body.-full .app-wrapper {
+  @apply mx-16;
+  max-width: 100%;
+}
+
 .modal-content {
   width: $app-width;
   p {

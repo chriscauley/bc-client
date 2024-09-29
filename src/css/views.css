@@ -81,3 +81,21 @@ body {
     color: var(--text-alt);
   }
 }
+
+.master-view__cell {
+  cursor: pointer;
+  max-width: 250px;
+  .master-view__truncate {
+    @apply block truncate;
+  }
+  &.-last-swapped {
+    outline: 4px rgba(255,255,255,0.5) solid;
+  }
+  &.-selected {
+    outline: 4px white solid;
+  }
+}
+
+.table.-striped tbody tr:nth-of-type(odd) {
+  background: var(--bg-alt);
+}

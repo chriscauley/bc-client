@@ -41,7 +41,7 @@ export default {
   methods: {
     isLink(link) {
       try {
-        const url = new URL(link)
+        new URL(link)
         return true
       } catch (e) {
         return false
