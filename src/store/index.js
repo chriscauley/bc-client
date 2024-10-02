@@ -1,6 +1,5 @@
 // import unrest from '@unrest/vue'
 
-import achievement from './achievement'
 import app from './app'
 import auth from './auth'
 import event from './event'
@@ -9,7 +8,6 @@ import vote from './vote'
 const store = {}
 
 const modules = {
-  achievement,
   app,
   auth,
   event,
