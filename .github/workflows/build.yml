@@ -21,7 +21,7 @@ jobs:
       - name: Build client
         run: |
           yarn install
-          yarn build:release
+          yarn build
           tar -czvf release.tar.gz dist
 
       - name: create release
