@@ -75,6 +75,13 @@ export default {
   mounted() {
     // TODO this needs to be moved to the server because people can use multiple browsers
     // the first time they come to the site, redirect to the help page
+    if (this.$route.query.login_success) {
+      this.$ui.toast.success('You have been logged in successfully.')
+      const query = Object.assign({}, this.$route.query)
+      delete query.login_success
+      this.$router.replace({ query })
+    }
+
     if (this.$store.app.storage.state.first_visit) {
       this.$router.replace('/help')
       this.$store.app.storage.save({ first_visit: false })
