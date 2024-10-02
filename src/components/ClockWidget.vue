@@ -7,14 +7,6 @@
     <span class="ec ec-sleeping -small" v-else />
     <Teleport to="body">
       <unrest-modal v-if="show_clock" @close="show_clock = false" title="Select a Session">
-        <div class="nav nav-tabs">
-          <div class="nav-item">
-            <div :class="getTabClass('time')" @click="show = 'time'">Time</div>
-          </div>
-          <div class="nav-item">
-            <div :class="getTabClass('date')" @click="show = 'date'">Date</div>
-          </div>
-        </div>
         <div :class="getContentClass('time')">
           <div class="list-group app-nav__clock-list">
             <div class="list-group-item" @click="setTime(null)">Live! {{ live_time }}</div>
@@ -28,11 +20,11 @@
             </div>
           </div>
         </div>
-        <div :class="getContentClass('date')">
-          <button v-for="event in events" :key="event.id" :class="getClass(event)">
-            {{ event.title }}
-          </button>
-        </div>
+        <!-- <div :class="getContentClass('date')"> -->
+        <!--   <button v-for="event in events" :key="event.id" :class="getClass(event)"> -->
+        <!--     {{ event.title }} -->
+        <!--   </button> -->
+        <!-- </div> -->
       </unrest-modal>
     </Teleport>
   </div>
