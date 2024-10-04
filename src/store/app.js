@@ -87,7 +87,7 @@ export default ({ store }) => {
         next,
         actual_next,
         sessions: sessions?.filter((s) => s.time === next) || [],
-        display_time: format(current_time, 'h:mmaaaaa'),
+        display_time: format(current_time, 'h:mm'),
         live: now === current_time,
       }
     },

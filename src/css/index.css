@@ -39,16 +39,16 @@ body.-full .app-wrapper {
     width: 1.2em;
   }
   &.yes-no-may-be-so-blob {
-    background-image: url("/public/yes-no-may-be-so-blob.gif");
+    background-image: url("/yes-no-may-be-so-blob.gif");
   }
   &.party-blob {
-    background-image: url("/public/party-blob.gif");
+    background-image: url("/party-blob.gif");
   }
   &.party-blob-2 {
-    background-image: url("/public/party-blob-2.gif");
+    background-image: url("/party-blob-2.gif");
   }
   &.conference-logo {
-    background-image: url("/public/favicon.ico");
+    background-image: url("/favicon.ico");
   }
 }
 

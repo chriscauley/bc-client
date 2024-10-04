@@ -17,7 +17,7 @@ body {
     @apply font-bold pr-2;
     font-size: 1.5rem;
     img {
-      max-height: 55px;
+      max-height: 45px;
     }
   }
   .btn {
@@ -49,6 +49,10 @@ body {
   .ec-sleeping {
     font-size: 0.75em;
     @apply ml-2 mt-2;
+  }
+  ._icon {
+    font-size: 24px;
+    line-height: 1;
   }
 }
 

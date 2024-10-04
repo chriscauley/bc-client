@@ -5,14 +5,17 @@
     </router-link>
     <clock-widget />
     <div class="flex-grow" />
+    <a class="btn -link" href="/map.png">
+      <i class="fa fa-map-marker _icon" />
+    </a>
     <router-link class="btn -link" to="/help/">
-      <i class="fa fa-question-circle" style="font-size: 2em; line-height: 1" />
+      <i class="fa fa-question-circle _icon" />
     </router-link>
-    <router-link class="btn -link" to="/settings/">
-      <i class="fa fa-user" style="font-size: 2em; line-height: 1" />
+    <router-link class="btn -link _icon" to="/settings/">
+      <i class="fa fa-user" />
     </router-link>
-    <router-link class="btn -link" to="/vote/">
-      <span class="ec ec-thinking" style="font-size: 2em" />
+    <router-link class="btn -link _icon" to="/vote/">
+      <span class="ec ec-thinking" />
       <span class="pill -danger">{{ unvoted }}</span>
     </router-link>
   </div>
