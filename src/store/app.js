@@ -73,14 +73,19 @@ export default ({ store }) => {
       const now = new Date().valueOf()
       const { times, sessions } = this.get()
       let current_time = storage.state.current_time || now
+
+      // used to show attendance
+      const actual_next = sortBy(times, (t) => Math.abs(now - t.valueOf))[0]
+
       // the timezones are wrong in the database for BC 2023, 2024
       if (current_time > new Date(fixTimezone(event.end)).valueOf()) {
         current_time = Math.min(...event.times.map((t) => new Date(fixTimezone(t.start)).valueOf()))
       }
-      let next = sortBy(times, (t) => Math.abs(current_time - t.valueOf))[0]
+      const next = sortBy(times, (t) => Math.abs(current_time - t.valueOf))[0]
 
       return {
         next,
+        actual_next,
         sessions: sessions?.filter((s) => s.time === next) || [],
         display_time: format(current_time, 'h:mmaaaaa'),
         live: now === current_time,

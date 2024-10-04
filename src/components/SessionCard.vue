@@ -19,14 +19,25 @@
     </div>
   </div>
   <div class="app-view__btns -vote">
-    <div v-for="vote in vote_list" :key="vote.value">
-      <a @click="doVote(vote.value)" :class="getClass(vote)">
-        <span :class="getSessionIcon(session, vote)" />
-        <div>
-          {{ vote.text }}
-        </div>
-      </a>
+    <div
+      v-if="show_attendance"
+      @click="$store.vote.toggleAttendance(session)"
+      class="session-card__vote-button app-view__btn btn -attendance"
+    >
+      <span :class="attendance_class" />
+      <span class="_text" v-if="attended">Attending!</span>
+      <span class="_text" v-else>Not attending</span>
     </div>
+    <template v-else-if="show_votes">
+      <div v-for="vote in vote_list" :key="vote.value">
+        <a @click="doVote(vote.value)" :class="getClass(vote)">
+          <span :class="getSessionIcon(session, vote)" />
+          <div>
+            {{ vote.text }}
+          </div>
+        </a>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -46,6 +57,21 @@ export default {
         href,
         title: this.session.data.titles[i] || href?.split('//')[1].split('/')[0],
       }))
+    },
+    show_attendance() {
+      return this.session.time === this.$store.app.now().actual_next
+    },
+    show_votes() {
+      console.log('todo')
+      return true
+    },
+    attendance_class() {
+      return ['ec ec-star2', 'attendance-star', !this.attended && '-gray']
+    },
+    attended() {
+      const { current_event_id } = this.$store.app.storage.state
+      const { attendances = [] } = this.$store.vote.getAllForEvent(current_event_id)
+      return attendances[this.session.time.id] === this.session.id
     },
   },
   methods: {

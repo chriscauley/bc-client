@@ -17,6 +17,15 @@
     .ec {
       font-size: 3em;
     }
+    &.-attendance {
+      @apply flex items-center gap-4;
+      ._text {
+        font-size: 2rem;
+      }
+      .-gray {
+        filter: grayscale(1);
+      }
+    }
   }
   .h3 {
     line-height: 1.2;

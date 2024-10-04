@@ -17,7 +17,7 @@ body {
     background: var(--bg);
     left: 50%;
     transform: translate(-50%, 0);
-    width: $app-width;
+    width: calc($app-width - 4rem);
     z-index: 1;
     &.-vote {
       @apply justify-around;
