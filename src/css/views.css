@@ -13,9 +13,11 @@ body {
     max-height: calc(100% - var(--nav-height) - var(--button-height));
   }
   &__btns {
-    @apply absolute border-t flex inset-0 items-center justify-between w-full p-4;
+    @apply border-t bottom-0 fixed flex items-center justify-between p-4;
     background: var(--bg);
-    top: unset;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: $app-width;
     z-index: 1;
     &.-vote {
       @apply justify-around;
