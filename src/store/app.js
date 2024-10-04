@@ -5,7 +5,7 @@ import { ReactiveLocalStorage } from '@unrest/vue-storage'
 
 const byId = (obj) => Object.fromEntries(Object.values(obj).map((entity) => [entity.id, entity]))
 
-// the timezones are wrong in the database for BC 2023
+// the timezones are wrong in the database for BC 2023, 2024
 const fixTimezone = (time) => time.replace('Z', '')
 
 export default ({ store }) => {
@@ -67,12 +67,13 @@ export default ({ store }) => {
     },
     now() {
       // this next line is a noop to watch the timer
-      const event = store.event.getCurrent() || { end: '' }
       const tick = storage.state.tick; // eslint-disable-line
+
+      const event = store.event.getCurrent() || { end: '' }
       const now = new Date().valueOf()
       const { times, sessions } = this.get()
       let current_time = storage.state.current_time || now
-      // the timezones are wrong in the database for BC 2023
+      // the timezones are wrong in the database for BC 2023, 2024
       if (current_time > new Date(fixTimezone(event.end)).valueOf()) {
         current_time = Math.min(...event.times.map((t) => new Date(fixTimezone(t.start)).valueOf()))
       }
