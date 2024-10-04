@@ -62,7 +62,7 @@ export default {
       return this.session.time === this.$store.app.now().actual_next
     },
     show_votes() {
-      console.log('todo')
+      // TODO hide ability to change vote after talk is complete
       return true
     },
     attendance_class() {

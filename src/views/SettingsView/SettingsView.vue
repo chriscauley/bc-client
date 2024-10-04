@@ -3,6 +3,7 @@
     <h3 class="h3">Account Settings</h3>
     <no-auth-form v-if="!$store.auth.isAuthenticated()" />
     <auth-form v-else />
+    <attended-talks />
   </div>
 </template>
 
