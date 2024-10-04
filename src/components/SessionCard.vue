@@ -8,9 +8,11 @@
         <hr />
         <div>
           <h4 class="h4">Additional info</h4>
-          <div v-for="link in session.data.links" :key="link">
-            <a class="truncate" v-if="isLink(link)" :href="link">{{ link }}</a>
-            <div v-else>{{ link }}</div>
+          <div v-for="link in links" :key="link">
+            <a class="truncate" v-if="isLink(link)" :href="link.href">
+              {{ link.title }}
+            </a>
+            <div v-else>{{ link.title }}</div>
           </div>
         </div>
       </template>
@@ -38,10 +40,18 @@ export default {
   data() {
     return { getSessionIcon, vote_list }
   },
+  computed: {
+    links() {
+      return this.session.data.links.map((href, i) => ({
+        href,
+        title: this.session.data.titles[i] || href?.split('//')[1].split('/')[0],
+      }))
+    },
+  },
   methods: {
     isLink(link) {
       try {
-        new URL(link)
+        new URL(link.href)
         return true
       } catch (e) {
         return false
