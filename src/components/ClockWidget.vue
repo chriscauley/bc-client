@@ -3,8 +3,8 @@
     <span>{{ display_parts[0] }}</span>
     <span class="app-nav__blink">:</span>
     <span>{{ display_parts[1] }}</span>
-    <span class="app-nav__blink -small" v-if="$store.app.now().live">🔴</span>
-    <span class="ec ec-sleeping -small" v-else />
+    <!-- <span class="app-nav__blink -small" v-if="$store.app.now().live">🔴</span> -->
+    <!-- <span class="ec ec-sleeping -small" v-else /> -->
     <Teleport to="body">
       <unrest-modal v-if="show_clock" @close="show_clock = false" title="Select a Session">
         <div :class="getContentClass('time')">

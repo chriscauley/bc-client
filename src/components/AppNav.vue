@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import favicon from '@/../public/favicon.ico'
+import favicon from '@/../public/barcamp_2024.png'
 import ClockWidget from './ClockWidget.vue'
 
 export default {
